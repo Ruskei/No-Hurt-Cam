@@ -1,5 +1,7 @@
-package com.jupiterr.nohurtcam;
+package com.ruskei.nohurtcam;
 
+import me.shedaniel.autoconfig.AutoConfig;
+import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
 import net.fabricmc.api.ClientModInitializer;
 
 public class NoHurtCamClient implements ClientModInitializer {
@@ -10,6 +12,7 @@ public class NoHurtCamClient implements ClientModInitializer {
     public void onInitializeClient() {
         isEnabled = true;
         isHandEnabled = true;
-        System.out.println("bada bing");
+
+        AutoConfig.register(NoHurtCamConfig.class, GsonConfigSerializer::new);
     }
 }

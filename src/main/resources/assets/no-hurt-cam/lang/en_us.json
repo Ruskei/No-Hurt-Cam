@@ -1,0 +1,5 @@
+{
+  "text.autoconfig.no-hurt-cam.option.title": "No Hurt Cam Config",
+  "text.autoconfig.no-hurt-cam.option.shakeWorld": "Enable world hurt camera shake?",
+  "text.autoconfig.no-hurt-cam.option.shakeHand": "Enable hand hurt camera shake?"
+}

@@ -1,6 +1,8 @@
-package com.jupiterr.nohurtcam.mixin;
+package com.ruskei.nohurtcam.mixin;
 
-import com.jupiterr.nohurtcam.NoHurtCamClient;
+import com.ruskei.nohurtcam.NoHurtCamClient;
+import com.ruskei.nohurtcam.NoHurtCamConfig;
+import me.shedaniel.autoconfig.AutoConfig;
 import net.minecraft.client.render.GameRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import org.spongepowered.asm.mixin.Mixin;
@@ -14,11 +16,13 @@ public abstract class GameRendererMixin {
 
     @Redirect(method = "renderWorld", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/GameRenderer;tiltViewWhenHurt(Lnet/minecraft/client/util/math/MatrixStack;F)V"))
     private void renderWorldInjected(GameRenderer instance, MatrixStack matrices, float tickDelta) {
-        if (!NoHurtCamClient.isEnabled) tiltViewWhenHurt(matrices, tickDelta);
+        NoHurtCamConfig config = AutoConfig.getConfigHolder(NoHurtCamConfig.class).getConfig();
+        if (config.shakeWorld) tiltViewWhenHurt(matrices, tickDelta);
     }
 
     @Redirect(method = "renderHand", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/GameRenderer;tiltViewWhenHurt(Lnet/minecraft/client/util/math/MatrixStack;F)V"))
     private void renderHandInjected(GameRenderer instance, MatrixStack matrices, float tickDelta) {
-        if (!NoHurtCamClient.isHandEnabled) tiltViewWhenHurt(matrices, tickDelta);
+        NoHurtCamConfig config = AutoConfig.getConfigHolder(NoHurtCamConfig.class).getConfig();
+        if (config.shakeHand) tiltViewWhenHurt(matrices, tickDelta);
     }
 }

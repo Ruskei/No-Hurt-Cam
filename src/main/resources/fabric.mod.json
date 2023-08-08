@@ -15,8 +15,9 @@
   "environment": "client",
   "entrypoints": {
     "client": [
-      "com.jupiterr.nohurtcam.NoHurtCamClient"
-    ]
+      "com.ruskei.nohurtcam.NoHurtCamClient"
+    ],
+    "modmenu": [ "com.ruskei.nohurtcam.NoHurtCamModMenu" ]
   },
   "mixins": [
     "no-hurt-cam.mixins.json"
