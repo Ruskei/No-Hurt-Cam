@@ -1,5 +1,7 @@
 {
-  "text.autoconfig.no-hurt-cam.option.title": "No Hurt Cam Config",
-  "text.autoconfig.no-hurt-cam.option.shakeWorld": "Enable world hurt camera shake?",
-  "text.autoconfig.no-hurt-cam.option.shakeHand": "Enable hand hurt camera shake?"
+  "title.no-hurt-cam.config" : "No Hurt Cam",
+  "category.no-hurt-cam.general" : "Settings",
+  "option.no-hurt-cam.worldShake" : "World Tilt %",
+  "option.no-hurt-cam.handShake" : "Hand Tilt %",
+  "option.no-hurt-cam.directionalTilt" : "Directional Tilt"
 }
