@@ -1,20 +1,19 @@
 package com.ruskei.nohurtcam;
 
 import net.fabricmc.loader.api.FabricLoader;
-import net.fabricmc.loader.api.ModContainer;
-import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 
 public class NoHurtCamConfig {
     public static int worldShake;
     public static int handShake;
     public static boolean directionalTilt;
+
+    public static int x;
+    public static int y;
 
     public static void load() {
         Path filePath = FabricLoader.getInstance().getConfigDir().resolve("no-hurt-cam.json");
@@ -24,13 +23,40 @@ public class NoHurtCamConfig {
                 byte[] jsonData = Files.readAllBytes(filePath);
                 JSONObject config = new JSONObject(new String(jsonData));
 
+                boolean old = false;
+
+                if (config.has("shakeWorld")) {
+                    int i = (Boolean) config.get("shakeWorld") ? 1 : 0;
+                    worldShake = i * 100;
+                    old = true;
+                }
+
+                if (config.has("shakeHand")) {
+                    int i = (Boolean) config.get("shakeHand") ? 1 : 0;
+                    handShake = i * 100;
+                    old = true;
+                }
+
+                if (old) {
+                    directionalTilt = false;
+                    x = 8;
+                    y = 8;
+
+                    save();
+                    return;
+                }
+
                 worldShake = config.getInt("worldShake");
                 handShake = config.getInt("handShake");
                 directionalTilt = config.getBoolean("directionalTilt");
+                x = config.getInt("x");
+                y = config.getInt("y");
             } else {
                 worldShake = 0;
                 handShake = 100;
                 directionalTilt = false;
+                x = 8;
+                y = 8;
 
                 save();
             }
@@ -45,6 +71,8 @@ public class NoHurtCamConfig {
             config.put("worldShake", worldShake);
             config.put("handShake", handShake);
             config.put("directionalTilt", directionalTilt);
+            config.put("x", x);
+            config.put("y", y);
 
             Path filePath = FabricLoader.getInstance().getConfigDir().resolve("no-hurt-cam.json");
 

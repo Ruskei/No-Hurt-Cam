@@ -7,7 +7,8 @@
   ],
   "client": [
     "AccessibilityOptionsScreenMixin",
-    "GameRendererMixin"
+    "GameRendererMixin",
+    "OptionsScreenMixin"
   ],
   "injectors": {
     "defaultRequire": 1

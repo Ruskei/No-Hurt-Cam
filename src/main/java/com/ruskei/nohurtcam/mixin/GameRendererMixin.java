@@ -18,7 +18,6 @@ public abstract class GameRendererMixin {
         this.client = client;
     }
 
-    @Shadow protected abstract void tiltViewWhenHurt(MatrixStack matrices, float tickDelta);
     @Shadow final MinecraftClient client;
 
     @Redirect(method = "renderWorld", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/GameRenderer;tiltViewWhenHurt(Lnet/minecraft/client/util/math/MatrixStack;F)V"))
@@ -40,8 +39,7 @@ public abstract class GameRendererMixin {
                 f = MathHelper.sin(f * f * f * f * (float)Math.PI);
                 g = livingEntity.getDamageTiltYaw();
                 matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(-g));
-                System.out.println(this.client.options.getDamageTiltStrength().getValue());
-                float h = (float)((double)(-f) * 14.0 * NoHurtCamConfig.worldShake);
+                float h = (float)((double)(-f) * 14.0 * (NoHurtCamConfig.worldShake / 100f));
                 matrices.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(h));
                 matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(g));
             }
@@ -67,8 +65,7 @@ public abstract class GameRendererMixin {
                 f = MathHelper.sin(f * f * f * f * (float)Math.PI);
                 g = livingEntity.getDamageTiltYaw();
                 matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(-g));
-                System.out.println(this.client.options.getDamageTiltStrength().getValue());
-                float h = (float)((double)(-f) * 14.0 * NoHurtCamConfig.handShake);
+                float h = (float)((double)(-f) * 14.0 * (NoHurtCamConfig.handShake / 100f));
                 matrices.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(h));
                 matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(g));
             }

@@ -3,5 +3,10 @@
   "category.no-hurt-cam.general" : "Settings",
   "option.no-hurt-cam.worldShake" : "World Tilt %",
   "option.no-hurt-cam.handShake" : "Hand Tilt %",
-  "option.no-hurt-cam.directionalTilt" : "Directional Tilt"
+  "option.no-hurt-cam.directionalTilt" : "Directional Tilt",
+  "option.no-hurt-cam.x" : "X Pos",
+  "option.no-hurt-cam.y" : "Y Pos",
+  "tooltip.no-hurt-cam.directionalTilt" : "Toggle directional tilt when damaged",
+  "tooltip.no-hurt-cam.x" : "Change button x position",
+  "tooltip.no-hurt-cam.y" : "Change button y position"
 }

@@ -14,7 +14,7 @@ public class NoHurtCamModMenu implements ModMenuApi {
         return NoHurtCamModMenu::getConfigScreen;
     }
 
-    private static Screen getConfigScreen(Screen parent) {
+    public static Screen getConfigScreen(Screen parent) {
         ConfigBuilder builder = ConfigBuilder.create()
                 .setParentScreen(parent)
                 .setTitle(Text.translatable("title.no-hurt-cam.config"));
@@ -38,6 +38,18 @@ public class NoHurtCamModMenu implements ModMenuApi {
         general.addEntry(entryBuilder.startBooleanToggle(Text.translatable("option.no-hurt-cam.directionalTilt"), NoHurtCamConfig.directionalTilt)
                 .setTooltip(Text.translatable("tooltip.no-hurt-cam.tiltToggle"))
                 .setSaveConsumer(newValue -> NoHurtCamConfig.directionalTilt = newValue)
+                .build());
+
+        general.addEntry(entryBuilder.startIntField(Text.translatable("option.no-hurt-cam.x"), NoHurtCamConfig.x)
+                .setDefaultValue(8)
+                .setTooltip(Text.translatable("tooltip.no-hurt-cam.x"))
+                .setSaveConsumer(newValue -> NoHurtCamConfig.x = newValue)
+                .build());
+
+        general.addEntry(entryBuilder.startIntField(Text.translatable("option.no-hurt-cam.y"), NoHurtCamConfig.y)
+                .setDefaultValue(8)
+                .setTooltip(Text.translatable("tooltip.no-hurt-cam.y"))
+                .setSaveConsumer(newValue -> NoHurtCamConfig.y = newValue)
                 .build());
 
         builder.setSavingRunnable(NoHurtCamConfig::save);
