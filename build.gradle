@@ -23,6 +23,8 @@ dependencies {
         exclude(group: "net.fabricmc.fabric-api")
     }
     modApi "com.terraformersmc:modmenu:7.0.1"
+    // https://mvnrepository.com/artifact/org.json/json
+    implementation include('org.json:json:20090211')
 }
 
 processResources {
