@@ -23,16 +23,28 @@ public class NoHurtCamModMenu implements ModMenuApi {
 
         ConfigEntryBuilder entryBuilder = builder.entryBuilder();
 
-        general.addEntry(entryBuilder.startIntSlider(Text.translatable("option.no-hurt-cam.worldShake"), NoHurtCamConfig.worldShake, 0, 120)
+        general.addEntry(entryBuilder.startIntSlider(Text.translatable("option.no-hurt-cam.worldHurtShake"), NoHurtCamConfig.worldHurtShake, 0, 120)
                 .setDefaultValue(0)
                 .setTooltip(Text.of("0-120%"))
-                .setSaveConsumer(newValue -> NoHurtCamConfig.worldShake = newValue)
+                .setSaveConsumer(newValue -> NoHurtCamConfig.worldHurtShake = newValue)
                 .build());
 
-        general.addEntry(entryBuilder.startIntSlider(Text.translatable("option.no-hurt-cam.handShake"), NoHurtCamConfig.handShake, 0, 120)
+        general.addEntry(entryBuilder.startIntSlider(Text.translatable("option.no-hurt-cam.handHurtShake"), NoHurtCamConfig.handHurtShake, 0, 120)
                 .setDefaultValue(100)
                 .setTooltip(Text.of("0-120%"))
-                .setSaveConsumer(newValue -> NoHurtCamConfig.handShake = newValue)
+                .setSaveConsumer(newValue -> NoHurtCamConfig.handHurtShake = newValue)
+                .build());
+
+        general.addEntry(entryBuilder.startIntSlider(Text.translatable("option.no-hurt-cam.worldBobbing"), NoHurtCamConfig.worldBobbing, 0, 120)
+                .setDefaultValue(100)
+                .setTooltip(Text.of("0-120%"))
+                .setSaveConsumer(newValue -> NoHurtCamConfig.worldBobbing = newValue)
+                .build());
+
+        general.addEntry(entryBuilder.startIntSlider(Text.translatable("option.no-hurt-cam.handBobbing"), NoHurtCamConfig.handBobbing, 0, 120)
+                .setDefaultValue(100)
+                .setTooltip(Text.of("0-120%"))
+                .setSaveConsumer(newValue -> NoHurtCamConfig.handBobbing = newValue)
                 .build());
 
         general.addEntry(entryBuilder.startBooleanToggle(Text.translatable("option.no-hurt-cam.directionalTilt"), NoHurtCamConfig.directionalTilt)

@@ -1,8 +1,10 @@
 {
   "title.no-hurt-cam.config" : "No Hurt Cam",
   "category.no-hurt-cam.general" : "Settings",
-  "option.no-hurt-cam.worldShake" : "World Tilt %",
-  "option.no-hurt-cam.handShake" : "Hand Tilt %",
+  "option.no-hurt-cam.worldHurtShake" : "World Hurt Tilt %",
+  "option.no-hurt-cam.handHurtShake" : "Hand Hurt Tilt %",
+  "option.no-hurt-cam.worldBobbing" : "World Bobbing %",
+  "option.no-hurt-cam.handBobbing" : "Hand Bobbing %",
   "option.no-hurt-cam.directionalTilt" : "Directional Tilt",
   "option.no-hurt-cam.x" : "X Pos",
   "option.no-hurt-cam.y" : "Y Pos",
